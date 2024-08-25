@@ -1,0 +1,67 @@
+.TOP{
+	margin-bottom:-5px;
+	width:100%
+}
+
+.HOME{
+
+	width:100px;
+	height:50;
+
+}
+
+.CART{
+	width:100px;
+	height:50;
+
+}
+
+.MENU{
+
+	width:100px;
+	height:50;
+
+
+}
+
+.table1{
+	width:100%;
+	border-collapse:collapse
+
+
+}
+
+.td1{
+	text-align: center;
+	vertical-align: middle;
+	border:solid 5px #ccc;
+}
+.name{
+	font-size:100px;
+	text-align:center;
+}
+
+.news{
+	background-color:#000000;
+	color:#FFFFFF;
+	font-size:100px;
+	text-align:center;
+
+
+}
+
+.newitem{
+
+	margin-top:30px;
+	background-color:#000000;
+	color:#FFFFFF;
+	font-size:100px;
+	text-align:center;
+
+}
+
+.itemimg{
+	margin-top:20px;
+	width:500px;
+	height:400px;
+}
