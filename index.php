@@ -24,7 +24,7 @@
 			</td>
 
 			<td class="td1">
-				<a href="login.jsp">
+				<a href="login.php">
 					<img src="img/21.png" alt="メニュー" class="MENU">
 				</a>
 			</td>

@@ -1,0 +1,28 @@
+.complete{
+    padding:300px;
+    height:300px;
+    text-align:center;
+    margin:auto;
+    font-size:70px;
+}
+
+.button{
+    text-align:center;
+    margin-bottom:100px;
+}
+
+main{
+}
+
+header{
+    text-align:center;
+}
+
+footer{
+    clear:left;
+    width:100%;
+    height:50px;
+    left:0px;color:white;
+    background-color:black;
+    text-align:center;
+   }

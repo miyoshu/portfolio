@@ -12,7 +12,6 @@
 	</div>
 	<div id="main">
 		<div id="top">
-			<p>Login</p>
 		</div>
 		<div>
 			<h3>商品を購入する際にはログインをお願いします。</h3>
@@ -36,7 +35,6 @@
 		<div id="pr">
 		</div>
 	</div>
-	a
 
 
 </body>
