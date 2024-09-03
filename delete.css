@@ -1,0 +1,16 @@
+.delete{
+    padding:100px;
+    height:300px;
+    margin:auto;
+    font-size:30px;
+}
+
+.submit{
+    text-align:center;
+    margin-bottom:100px;
+}
+
+table{
+    margin:auto;
+    border-spacing: 50px 20px;
+}

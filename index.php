@@ -8,6 +8,12 @@
 </head>
 
 <body>
+	<ul>
+		<li><a href="regist.php">アカウント登録</a></li>
+		<li><a href="update.php">アカウント編集</a></li>
+		<li><a href="delete.php">アカウント削除</a></li>
+	</ul>
+
 
 	<table class="table1">
 		<tr>
