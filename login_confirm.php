@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>アカウント登録確認画面</title>
+        <link rel="stylesheet" type="text/css" href="css/login_confirm.css">
+
 <?php
 session_start();
 try {

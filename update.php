@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>アカウント削除画面</title>
-        <link rel="stylesheet" type="text/css" href="update.css"> 
+        <link rel="stylesheet" type="text/css" href="css/update.css"> 
         <script>
             function check(){
                 let check_result = true;

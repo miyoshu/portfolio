@@ -24,7 +24,7 @@ try {
 	<head>
     	<meta charset="utf-8">
     	<title>削除完了</title>
-		<link rel="stylesheet" type="text/css" href="delete_complete.css">
+		<link rel="stylesheet" type="text/css" href="css/delete_complete.css">
 	</head>
 	<body> 
 		<h1>アカウント削除完了画面</h1>

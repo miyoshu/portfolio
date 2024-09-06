@@ -5,7 +5,7 @@
 <meta charset="utf-8">
     <meta charset="utf-8">
         <title>アカウント登録完了画面</title>
-        <link rel="stylesheet" type="text/css" href="update_complete.css">
+        <link rel="stylesheet" type="text/css" href="css/update_complete.css">
 </head>
 
 <body>

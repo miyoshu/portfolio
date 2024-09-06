@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>アカウント登録確認画面</title>
-        <link rel="stylesheet" type="text/css" href="update_confirm.css">
+        <link rel="stylesheet" type="text/css" href="css/update_confirm.css">
 </head>
 
 <body>

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
     <meta charset="utf-8">
         <title>アカウント削除確認画面</title>
-        <link rel="stylesheet" type="text/css" href="delete_confirm.css">
+        <link rel="stylesheet" type="text/css" href="css/delete_confirm.css">
 </head>
 
 <body>

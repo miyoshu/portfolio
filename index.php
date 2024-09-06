@@ -15,7 +15,7 @@ $(function () {
 
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" href="index.css">
+<link rel = "stylesheet" href="css/index.css">
 <title>ホーム画面</title>
 </head>
 
@@ -25,13 +25,20 @@ $(function () {
 	<table class="table1">
 		<tr>
 			<td class="td1">
-				<a href="">
+				<a href="index.php">
 					<img src="img/20.png" alt="ホーム" class="HOME">
+				</td>
+			</a>
+
+			<td class="td1">
+				<a href="item.php">
+					<img src="img/18.png" alt="アイテム" class="ITEM">
 				</a>
 			</td>
 
+
 			<td class="td1">
-				<a href="">
+				<a href="cart.php">
 					<img src="img/19.png" alt="カート" class="CART">
 				</a>
 			</td>
@@ -44,8 +51,8 @@ $(function () {
 					<nav class="navigation">
     					<ul class="navigation__list">
      						<li class="navigation__list-item"><a href="login.php" class="navigation__link">マイページ</a></li>
-    						<li class="navigation__list-item"><a href="#" class="navigation__link">お知らせ</a></li>
-    						<li class="navigation__list-item"><a href="#" class="navigation__link">お問い合わせ</a></li>
+    						<li class="navigation__list-item"><a href="information.php" class="navigation__link">お知らせ</a></li>
+    						<li class="navigation__list-item"><a href="contact.php" class="navigation__link">お問い合わせ</a></li>
    						 </ul>
   					</nav>
 				</header>
