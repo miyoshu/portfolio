@@ -15,7 +15,7 @@ $(function () {
 
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" href="css/cart.css">
+<link rel = "stylesheet" href="css/contact.css">
 <title>ホーム画面</title>
 </head>
 
@@ -59,4 +59,20 @@ $(function () {
 			</td>
 
 		</tr>
-	</table>
+</table>
+
+	<form action="contact_confirm.php" method="post" class="contact">
+  <h1>お問い合わせ</h1>
+
+		<label for="name">お名前：</label>
+    		<input type="text" name="name" />
+			<br>
+   		<label for="mail">メールアドレス：</label>
+       		<input type="mail" name="mail">
+			<br>
+    	<label for="comments">お問い合わせ本文</label>
+        	<textarea name="comments"></textarea>
+
+
+<input type="submit" value="送信する" class="submit">
+</form>

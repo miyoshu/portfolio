@@ -1,10 +1,3 @@
-<?php
-if(isset($_SESSION['family_name'])){
-          echo "ようこそ、".$_SESSION['family_name']."さん！";
-        }
-?>
-
-<!DOCTYPE html>
 <html lang="ja">
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
@@ -19,16 +12,24 @@ $(function () {
 });
 </script>
 
+<?php
+ mb_internal_encoding("utf8");
+ $pdo = new
+ PDO("mysql:dbname=ecsite;host=localhost;" ,"root" ,"");
+ $pdo->exec("insert into contactform(name,mail,comments)
+ values('".$_POST['name']."','".$_POST['mail']."','".$_POST['comments']."');");
+ ?>
+
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" href="css/index.css">
+<link rel = "stylesheet" href="css/contact_complete.css">
 <title>ホーム画面</title>
 </head>
 
 <body>
 
 
-	<table class="table1">
+<table class="table1">
 		<tr>
 			<td class="td1">
 				<a href="index.php">
@@ -65,31 +66,15 @@ $(function () {
 			</td>
 
 		</tr>
-	</table>
+</table>
 
-	<div class="name">
-		ブランド名
-	</div>
-
-
-	<img src="img/7.jpg" class="TOP">
-
-	<div class="news">
-		NEWS
-	</div>
-
-	<!-- ニュース内容 -->
-
-	<div class="newitem">
-		NEW ITEM
-	</div>
-
-	<img src="img/4.JPG" class="itemimg">
-
-	Blanche Neige
-
+<body>
+<h1>お問合わせフォーム</h1>
+ <div class="confirm">
+ <p>お問い合わせ有難うございました。
+    <br>3営業日以内に担当者よりご連絡差し上げます。
+</p>
+ </div>
 
 
 </body>
-
-</html>
