@@ -19,7 +19,7 @@ try {
 if (password_verify($_POST['password'], $result['password'])) {
     $msg = 'ログインしました。';
     $_SESSION['family_name']= $result['family_name'];
-    $link = '<a href="index.php">ホーム</a>';
+    header('Location: '.$_POST["referrer"]);
 } else {
     $msg = 'メールアドレスもしくはパスワードが間違っています。';
     $link = '<a href="login.php">戻る</a>';

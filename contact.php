@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -51,8 +53,10 @@ $(function () {
 					<nav class="navigation">
     					<ul class="navigation__list">
      						<li class="navigation__list-item"><a href="login.php" class="navigation__link">マイページ</a></li>
+							<li class="navigation__list-item"><a href="regist.php" class="navigation__link">アカウント登録</a></li>
     						<li class="navigation__list-item"><a href="information.php" class="navigation__link">お知らせ</a></li>
     						<li class="navigation__list-item"><a href="contact.php" class="navigation__link">お問い合わせ</a></li>
+							<li class="navigation__list-item"><a href="logout.php" class="navigation__link">ログアウト</a></li>
    						 </ul>
   					</nav>
 				</header>
