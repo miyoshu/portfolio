@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -11,7 +15,7 @@
 
     <h1>アカウント削除画面</h1>
     <?php
-    $pdo= new PDO("mysql:dbname=lesson01;host=localhost;","root","");
+    $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
     $sql = 'select id,family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_01,address_02,authority from account where id=:id';
     $sth = $pdo->prepare($sql);
     $params = array(':id' => $_POST['id']);

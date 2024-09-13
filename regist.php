@@ -101,9 +101,18 @@ $(function () {
 			</a>
 
 			<td class="td1">
-				<a href="item.php">
-					<img src="img/18.png" alt="アイテム" class="ITEM">
-				</a>
+				<header class="header2">
+					<img src="img/18.png" alt="アイテム" class="hamburger-menu2" id="js-hamburger-menu2">
+					<nav class="navigation2">
+    					<ul class="navigation__list2">
+							<li class="navigation__list-item2"><a href="item_apparel.php" class="navigation__link2">アパレル</a></li>
+							<li class="navigation__list-item2"><a href="item_jewelry.php" class="navigation__link2">ジュエリー</a></li>
+    						<li class="navigation__list-item2"><a href="item_fragrance.php" class="navigation__link2">フレグランス</a></li>
+    						<li class="navigation__list-item2"><a href="item_watch.php" class="navigation__link2">ウォッチ</a></li>
+							<li class="navigation__list-item2"><a href="item_gift.php" class="navigation__link2">ギフト</a></li>
+   						 </ul>
+  					</nav>
+				</header>
 			</td>
 
 
@@ -170,7 +179,7 @@ $(function () {
                     <div>
                         <label>パスワード　※半角英数字のみ</label>
                         <br>
-                        <input type="text" class="text" input pattern="^[a-zA-Z0-9]+$" maxlength=" 10" size="35" name="password">
+                        <input type="text" class="text" input pattern="^[a-zA-Z0-9]+$" maxlength=" 20" size="35" name="password">
                         <p id="validate_msg5" style="color: red;"></p>
                     </div>
                     <div>
@@ -252,14 +261,7 @@ $(function () {
                         <input type="text" class="text" input pattern="^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf\0-9\u220D\u0020]*$" maxlength=" 100" size="35" name="address_02">
                         <p id="validate_msg9" style="color: red;"></p>
                     </div>
-                    <div>
-                        <label>アカウント権限</label>
-                        <br>
-                        <select name="authority">
-                            <option value="0"selected>一般</option>
-                            <option value="1">管理者</option>
-                        </select>
-                    </div>
+                    
                     <div>
                         <input type="submit" class="submit" value="確認する" onclick="return check();">
                     </div>

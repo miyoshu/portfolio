@@ -11,18 +11,19 @@ try {
     
     $mail = $_POST['mail'];
     $dbh = new PDO("mysql:dbname=ecsite;host=localhost;","root","");
-    $sql = "select password ,family_name  from account where mail = :mail";
+    $sql = "select password ,family_name,id  from account where mail = :mail";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':mail', $mail);
     $stmt->execute();
     $result = $stmt->fetch();
-if (password_verify($_POST['password'], $result['password'])) {
+if ($result && password_verify($_POST['password'], $result['password'])) {
     $msg = 'ログインしました。';
     $_SESSION['family_name']= $result['family_name'];
+    $_SESSION['id']= $result['id'];
     header('Location: '.$_POST["referrer"]);
 } else {
     $msg = 'メールアドレスもしくはパスワードが間違っています。';
-    $link = '<a href="login.php">戻る</a>';
+    $link = '<a href="login.php?referrer='.$_POST["referrer"].'">戻る</a>';
 }
 
     

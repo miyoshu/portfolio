@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -78,14 +83,22 @@
     </head>
 
 <body>
+    
     <main>
         <h1>アカウント更新画面</h1>
         <?php
+
+        //データベースに接続
             $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
-            $sql = 'select id,family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_01,address_02,authority from account where id=:id';
+        //SQL文(アカウント情報取得するための変数)
+            $sql = 'select id,family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_01,address_02 from account where id=:id';
+        //SQLを実行するための準備
             $sth = $pdo->prepare($sql);
-            $params = array(':id' => $_POST['id']);
+        //ログインユーザーのID(セッション情報のID)をバインド変数:IDに設定する
+            $params = array(':id' => $_SESSION['id']);
+        //SQL実行
             $sth->execute($params);
+        //
             $result = $sth->fetchAll();
     
 
@@ -256,18 +269,7 @@
                         <p id="validate_msg9" style="color: red;"></p>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label for="authority">アカウント権限</label>
-                        <p>
-                    </td>
-                    <td>
-                        <select name="authority">
-                            <option value="0" <?php if($row['authority']=="0"){ ?> selected <?php } ?>>一般</option>
-                            <option value="1"<?php if($row['authority']=="1"){ ?> selected <?php } ?>>管理者</option>
-                        </select>
-                    </td>
-                </tr>
+                
             </table>
                         
         <?php

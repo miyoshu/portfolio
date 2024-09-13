@@ -57,13 +57,7 @@
             <br>
             <?php echo $_POST['address_02']; ?>
         </p> 
-        <p>アカウント権限
-            <br>
-            <?php if( $_POST['authority']=="0"){
-                echo "一般";}
-                else{
-                    echo"管理者";} ?>
-        </p>
+        
 
         <form action="regist.php">
         <button type="button" onclick=history.back()>戻る</button>
@@ -82,7 +76,6 @@
             <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">
             <input type="hidden" value="<?php echo $_POST['address_01']; ?>" name="address_01">
             <input type="hidden" value="<?php echo $_POST['address_02']; ?>" name="address_02">
-            <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
 
         </form>
 

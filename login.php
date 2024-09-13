@@ -17,6 +17,15 @@ $(function () {
   });
 });
 </script>
+
+<script>
+$(function () {
+  $('#js-hamburger-menu2, .navigation__link2').on('click', function () {
+    $('.navigation2').slideToggle(500)
+    $('.hamburger-menu2').toggleClass('hamburger-menu2--open')
+  });
+});
+</script>
     
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,9 +43,18 @@ $(function () {
 			</a>
 
 			<td class="td1">
-				<a href="item.php">
-					<img src="img/18.png" alt="アイテム" class="ITEM">
-				</a>
+				<header class="header2">
+					<img src="img/18.png" alt="アイテム" class="hamburger-menu2" id="js-hamburger-menu2">
+					<nav class="navigation2">
+    					<ul class="navigation__list2">
+							<li class="navigation__list-item2"><a href="item_apparel.php" class="navigation__link2">アパレル</a></li>
+							<li class="navigation__list-item2"><a href="item_jewelry.php" class="navigation__link2">ジュエリー</a></li>
+    						<li class="navigation__list-item2"><a href="item_fragrance.php" class="navigation__link2">フレグランス</a></li>
+    						<li class="navigation__list-item2"><a href="item_watch.php" class="navigation__link2">ウォッチ</a></li>
+							<li class="navigation__list-item2"><a href="item_gift.php" class="navigation__link2">ギフト</a></li>
+   						 </ul>
+  					</nav>
+				</header>
 			</td>
 
 

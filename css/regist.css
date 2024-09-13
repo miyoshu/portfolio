@@ -139,3 +139,71 @@ form div{
 	  background: #333;
 	}
   }
+
+  .header2 {
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+  }
+
+  .hamburger-menu2 {
+	width: 100px;
+	height: 50;
+	position: relative;
+	border: none;
+	background: transparent;
+	appearance: none;
+	padding: 0;
+	cursor: pointer;
+  }
+ 
+  .hamburger-menu2--open .hamburger-menu2__bar {
+	top: 50%;
+  }
+  .hamburger-menu2--open .hamburger-menu2__bar:first-child {
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+  .hamburger-menu2--open .hamburger-menu2__bar:last-child {
+	transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  }
+  .hamburger-menu2--open .hamburger-menu2__bar:nth-child(2) {
+	display: none;
+  }
+  .navigation2 {
+	display: none;
+	background: #242424;
+	position: absolute;
+	top: 110px;
+	width: 100%;
+	z-index: 9999;
+  }
+  .navigation__list2 {
+	text-align: center;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  .navigation__list-item2 {
+	border-bottom: solid 1px #474747;
+  }
+  .navigation__list-item2:first-child {
+	border-top: solid 1px #474747;
+  }
+  .navigation__link2 {
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+	display: block;
+	padding: 24px 0;
+	transition: .5s;
+  }
+  @media (hover: hover) and (pointer: fine) {
+	.navigation__link2:hover {
+	  background: #333;
+	}
+  }
+
+
+  

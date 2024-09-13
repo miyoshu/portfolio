@@ -5,7 +5,7 @@ try {
     $user = "root";
     $password = "";
 
-    $dbh = new PDO("mysql:dbname=lesson01;host=localhost;","root","");
+    $dbh = new PDO("mysql:dbname=ecsite;host=localhost;","root","");
 
     $stmt = $dbh->prepare('UPDATE account SET delete_flag = :delete_flag WHERE id = :id');
 
