@@ -21,7 +21,7 @@ mb_internal_encoding("utf8");
 
 
 try{
-    $pdo= new PDO("mysql:dbname=lesson01;host=localhost;","root","");
+    $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
     if ($_POST['password']==""){
     $stmt = $pdo->prepare('UPDATE account SET family_name=:family_name,
                                             last_name=:last_name,
@@ -32,8 +32,7 @@ try{
                                             postal_code=:postal_code,
                                             prefecture=:prefecture,
                                             address_01=:address_01,
-                                            address_02=:address_02,
-                                            authority=:authority
+                                            address_02=:address_02
                                             WHERE id = :id');
 
     $stmt->execute(array(':family_name' => $_POST['family_name'],
@@ -46,7 +45,6 @@ try{
                         ':prefecture' => $_POST['prefecture'],
                         ':address_01' => $_POST['address_01'],
                         ':address_02' => $_POST['address_02'],
-                        ':authority' => $_POST['authority'],
                         ':id' => $_POST['id']
                     ));}
     else {
@@ -60,8 +58,7 @@ try{
                                                 postal_code=:postal_code,
                                                 prefecture=:prefecture,
                                                 address_01=:address_01,
-                                                address_02=:address_02,
-                                                authority=:authority
+                                                address_02=:address_02
                                                 WHERE id = :id');
     
     $stmt->execute(array(':family_name' => $_POST['family_name'],
@@ -75,7 +72,6 @@ try{
                             ':prefecture' => $_POST['prefecture'],
                             ':address_01' => $_POST['address_01'],
                             ':address_02' => $_POST['address_02'],
-                            ':authority' => $_POST['authority'],
                             ':id' => $_POST['id']
                         ));}
 

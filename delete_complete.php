@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 try {
 
     $user = "root";
@@ -13,9 +15,14 @@ try {
 
 	$result= '削除完了しました';
 
+	$_SESSION = array();
+	session_destroy();
+
 } catch (Exception $e) {
 		$result= 'エラーが発生しました' . $e->getMessage();
 }
+
+
 
 ?>
 

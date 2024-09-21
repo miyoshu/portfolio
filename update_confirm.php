@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -103,24 +104,27 @@
                         <?php echo  $_POST['address_02']." "; ?>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        アカウント権限
-                    </td>
-                    <td>
-                    <?php if( $_POST['authority']=="0"){
-                                echo "一般";}
-                        else{
-                                echo"管理者";} ?>
-                    </td>
-                </tr>
+               
             </table>
             
             <table>
                 <tr>   
                     <td>
-                        <form action="update.php">
-                            <button type="button" onclick=history.back()>戻る</button>
+                    <form action="update.php" method="post">
+                            <input type="submit" class="button2" value="戻る">
+                            <input type="hidden" value="<?php echo $_POST['id']; ?>" name="id">
+                            <input type="hidden" value="<?php echo $_POST['family_name']; ?>" name="family_name">
+                            <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
+                            <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
+                            <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">
+                            <input type="hidden" value="<?php echo $_POST['mail']; ?>" name="mail">
+                            <input type="hidden" value="<?php echo $_POST['password']; ?>" name="password">
+                            <input type="hidden" value="<?php echo $_POST['gender']; ?>" name="gender">
+                            <input type="hidden" value="<?php echo $_POST['postal_code']; ?>" name="postal_code">
+                            <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">
+                            <input type="hidden" value="<?php echo $_POST['address_01']; ?>" name="address_01">
+                            <input type="hidden" value="<?php echo $_POST['address_02']; ?>" name="address_02">
+
                         </form>
                     </td>
                     <td>
@@ -138,7 +142,6 @@
                             <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">
                             <input type="hidden" value="<?php echo $_POST['address_01']; ?>" name="address_01">
                             <input type="hidden" value="<?php echo $_POST['address_02']; ?>" name="address_02">
-                            <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
 
                         </form>
                     </td>
