@@ -84,17 +84,23 @@ $(function () {
 </table>
 
 	<form action="contact_confirm.php" method="post" class="contact">
-  <h1>お問い合わせ</h1>
+		<h1>お問い合わせ</h1>
 
-		<label for="name">お名前：</label>
+		<label for="name">お名前</label>
+			<br>
     		<input type="text" name="name" />
 			<br>
-   		<label for="mail">メールアドレス：</label>
+			<br>
+   		<label for="mail">メールアドレス</label>
+			<br>
        		<input type="mail" name="mail">
 			<br>
+			<br>
     	<label for="comments">お問い合わせ本文</label>
+			<br>
         	<textarea name="comments"></textarea>
 
-
-<input type="submit" value="送信する" class="submit">
-</form>
+		<br>
+		<br>
+		<input type="submit" value="送信する" class="submit">
+	</form>

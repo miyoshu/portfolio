@@ -1,3 +1,31 @@
+main{
+	margin-top: 50px;
+	padding-bottom: 30px;
+	text-align: center;
+	margin-left: 30%;
+    margin-right:30%;
+    background-color: lightgray;
+	display: inline-block;
+    text-align: left;
+	padding-left:30px;
+	padding-right: 30px;
+	
+}
+h1{
+	text-align: center;
+}
+.name{
+	text-align: center;
+}
+
+
+/*  ボタン　*/
+.button{
+	margin-left: -20px;
+	border-spacing: 60px 0;
+	margin-bottom: 50px;
+}
+
 .HOME{
 
 	width:100px;

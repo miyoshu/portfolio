@@ -12,6 +12,16 @@ $(function () {
   });
 });
 </script>
+
+<script>
+$(function () {
+  $('#js-hamburger-menu2, .navigation__link2').on('click', function () {
+    $('.navigation2').slideToggle(500)
+    $('.hamburger-menu2').toggleClass('hamburger-menu2--open')
+  });
+});
+</script>
+
     <head>
         <meta charset="UTF-8">
         <title>アカウント登録フォーム</title>
@@ -20,7 +30,7 @@ $(function () {
             function check(){
                 let check_result = true;
                 document.getElementById("validate_msg").innerHTML = "";
-                document.getElementById("validate_msg1").innerHTML = "";
+                document.getElementById("validate_msg1").innerHTML = "";                
                 document.getElementById("validate_msg2").innerHTML = "";
                 document.getElementById("validate_msg3").innerHTML = "";
                 document.getElementById("validate_msg4").innerHTML = "";

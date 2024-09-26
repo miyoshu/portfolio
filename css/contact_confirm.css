@@ -1,3 +1,23 @@
+.confirm{
+	margin-top: 100px;
+	text-align: center;
+	margin-left: 30%;
+    margin-right:30%;
+    background-color: lightgray;
+	display: inline-block;
+    text-align: left;
+	padding-left:30px;
+	padding-right: 30px;
+	
+}
+
+/*  ボタン　*/
+.button{
+	margin-left: -20px;
+	border-spacing: 60px 0;
+	margin-bottom: 50px;
+}
+
 .HOME{
 
 	width:100px;

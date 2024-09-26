@@ -91,12 +91,27 @@ $(function () {
 	header( 'Location:login.php?referrer=mypage.php');
 	}
 	?>
+<main>
 
-
-	<form action="update.php" method="post">
-        <button type="submit">アカウント情報変更</button>
-    </form>
-
-	<form action="delete.php" method="post">
-        <button type="submit">アカウント削除</button>
-    </form>
+	<h1>マイページ</h1>
+	<div class="name">
+		<?php	echo $_SESSION['family_name'].$_SESSION['last_name']." 様"
+		?>
+	</div>
+	<br>
+	<br>
+	<table class="button">
+		<tr>
+			<td>
+				<form action="update.php" method="post">
+        			<button type="submit">アカウント情報変更</button>
+    			</form>
+			</td>
+			<td>
+				<form action="delete.php" method="post">
+        			<button type="submit">アカウント削除</button>
+    			</form>
+			</td>
+		<tr>
+	</table>
+</main>

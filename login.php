@@ -89,7 +89,7 @@ $(function () {
 		<div id="pr">
 		</div>
 	</div>
-	<div id="main">
+	<div id="main" class="main">
 		<div id="top">
 		</div>
 		<div>
