@@ -3,6 +3,7 @@ session_start();
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -29,7 +30,7 @@ $(function () {
 
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" href="css/item.css">
+<link rel = "stylesheet" href="css/contact.css">
 <title>ホーム画面</title>
 </head>
 
@@ -41,17 +42,15 @@ $(function () {
 			<td class="td1">
 				<a href="index.php">
 					<img src="img/20.png" alt="ホーム" class="HOME">
-				</a>
-			</td>
+				</td>
+			</a>
 
 			<td class="td1">
-					
-
 				<header class="header2">
 					<img src="img/18.png" alt="アイテム" class="hamburger-menu2" id="js-hamburger-menu2">
 					<nav class="navigation2">
     					<ul class="navigation__list2">
-     						<li class="navigation__list-item2"><a href="item_apparel.php" class="navigation__link2">アパレル</a></li>
+							<li class="navigation__list-item2"><a href="item_apparel.php" class="navigation__link2">アパレル</a></li>
 							<li class="navigation__list-item2"><a href="item_jewelry.php" class="navigation__link2">ジュエリー</a></li>
     						<li class="navigation__list-item2"><a href="item_fragrance.php" class="navigation__link2">フレグランス</a></li>
     						<li class="navigation__list-item2"><a href="item_watch.php" class="navigation__link2">ウォッチ</a></li>
@@ -60,6 +59,7 @@ $(function () {
   					</nav>
 				</header>
 			</td>
+
 
 			<td class="td1">
 				<a href="cart.php">
@@ -85,76 +85,4 @@ $(function () {
 			</td>
 
 		</tr>
-	</table>
-
-
-	<?php
-	if(isset($_SESSION['family_name'])){
-		echo "ようこそ、".$_SESSION['family_name']."さん！";
-	  }
-	else{
-		echo "<a href='login.php?referrer=item.php'>ログイン</a>";
-		
-	}
-	?>
-
-	<br>
-	<h1>アパレル</h1>
-	<?php
-	//データベースに接続
-            $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
-        //SQL文(商品情報取得するための変数)
-            $sql = 'select name,price,quantity,item_code  from apparel ';
-        //SQLを実行するための準備
-            $sth = $pdo->prepare($sql);
-        //SQL実行
-            $sth->execute();
-        //
-            $result = $sth->fetchAll();
-            foreach ($result as $row){
-
-                    $set_id=$row['item_code'];
-                    $set_name=$row['name'];	
-                    $set_price=$row['price'];
-                    $set_quantity=$row['quantity'];
-
-					echo $set_name;
-					echo '<br>';
-					echo $set_price;
-					echo '<br>';
-					
-	?>
-			
-		
-					
-					<form action="cartin.php" method="post">
-
-					<select name="item_num">
-						
-					<?php
-					
-						for ($i=0; $i<10; $i++) {
-    					
-						echo '<option value="', $i, '">', $i, '</option>';
-						}
-					?>
-					
-				</select>
-				<br>
-					
-						<input type="submit" class="button2" value="カートに追加">
-						<input type="hidden" value="<?php echo $_SESSION['id']; ?>" name="id">
-						<input type="hidden" value="<?php echo $set_id['item_code']; ?>" name="item_code">
-						
-	
-					</form>
-					<br>
-					
-				<?php
-
-				}
-			
-					?>
-    
-
-					
+</table>
