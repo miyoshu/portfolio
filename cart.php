@@ -3,6 +3,7 @@ session_start();
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -29,8 +30,8 @@ $(function () {
 
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" href="css/cart.css">
-<title>カート画面</title>
+<link rel = "stylesheet" href="css/contact.css">
+<title>ホーム画面</title>
 </head>
 
 <body>
@@ -84,15 +85,67 @@ $(function () {
 			</td>
 
 		</tr>
-	</table>
+</table>
 
 
-	<?php
+
+<?php
 	if(isset($_SESSION['family_name'])){
 		echo "ようこそ、".$_SESSION['family_name']."さん！";
 	  }
 	else{
-		echo "<a href='login.php?referrer=cart.php'>ログイン</a>";
+		echo "<a href='login.php?referrer=item.php'>ログイン</a>";
 		
+	}
+	?>
+
+	<br>
+	<h1>アパレル</h1>
+
+<?php
+			$set_item_num=null;
+	//データベースに接続
+            $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
+        //SQL文(アカウント情報取得するための変数)
+            $sql = 'select item_num from cart where id=:id and item_code=:item_code';
+			$sth = $pdo->prepare($sql);
+		//ログインユーザーのID(セッション情報のID)をバインド変数:IDに設定する
+				$params = array(':id' => $_SESSION['id'],':item_code'=>$_POST['item_code']);
+			//SQL実行
+				$sth->execute($params);
+			//
+				$result = $sth->fetchAll();
+				foreach ($result as $row){
+						$set_item_num=$row['item_num'];
+					
+				}
+
+		?>
+
+	<?php
+
+	if(is_null($set_item_num)){
+		try{
+
+            $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
+            $pdo ->exec("insert into cart(id,item_code,item_num) values('".$_SESSION['id']."','".$_POST['item_code']."','".$_POST['item_num']."')");
+			$result = "カートに追加しました。";
+
+		}catch(PDOException $e){
+			$result = '<FONT COLOR="RED">エラーが発生したためカートに追加できません。</FONT>';
+		}
+
+	echo $result;
+	}
+	else{try{
+            $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
+            $pdo ->exec("UPDATE cart SET item_num = item_num + ".$_POST['item_num']."  where id= ".$_SESSION['id']." and item_code=".$_POST['item_code']);
+			$result = "カートに追加しました。";
+			
+		}catch(PDOException $e){
+			$result = '<FONT COLOR="RED">エラーが発生したためカートに追加できません。</FONT>';
+		}
+		echo $result;
+
 	}
 	?>

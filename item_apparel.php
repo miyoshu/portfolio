@@ -104,7 +104,7 @@ $(function () {
 	//データベースに接続
             $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
         //SQL文(商品情報取得するための変数)
-            $sql = 'select name,price,quantity,item_code  from apparel ';
+            $sql = 'select name,price,quantity,item_code  from item ';
         //SQLを実行するための準備
             $sth = $pdo->prepare($sql);
         //SQL実行
@@ -127,7 +127,7 @@ $(function () {
 			
 		
 					
-					<form action="cartin.php" method="post">
+					<form action="cart.php" method="post">
 
 					<select name="item_num">
 						
@@ -143,8 +143,7 @@ $(function () {
 				<br>
 					
 						<input type="submit" class="button2" value="カートに追加">
-						<input type="hidden" value="<?php echo $_SESSION['id']; ?>" name="id">
-						<input type="hidden" value="<?php echo $set_id['item_code']; ?>" name="item_code">
+						<input type="hidden" value="<?php echo $set_id; ?>" name="item_code">
 						
 	
 					</form>

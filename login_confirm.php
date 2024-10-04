@@ -11,7 +11,7 @@ try {
     
     $mail = $_POST['mail'];
     $dbh = new PDO("mysql:dbname=ecsite;host=localhost;","root","");
-    $sql = "select family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_01,address_02 from account where mail = :mail and delete_flag!=1" ;
+    $sql = "select id,family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_01,address_02 from account where mail = :mail and delete_flag!=1" ;
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':mail', $mail);
     $stmt->execute();
