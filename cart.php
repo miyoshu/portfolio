@@ -1,6 +1,34 @@
 <?php
 session_start();
+
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_item_num']) && isset($_POST['change_item_code']) ) {
+	$change_item_code = $_POST['change_item_code'];
+    $change_item_num = (int)$_POST['change_item_num'];
+
+
+    updateCart($change_item_code, $change_item_num);
+}
+
+//商品の数量を更新する関数
+function updateCart($change_item_code, $change_item_num) {
+    global $pdo;
+	$pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
+
+    if ($change_item_num <= 0) {
+         // 数量が0以下なら削除
+		$stmt = $pdo->prepare("DELETE FROM cart  WHERE id=:id and item_code=:item_code");
+		$stmt->execute([':id' => $_SESSION['id'] , ':item_code' => $change_item_code]);
+
+    } else { // 数量を更新
+
+        // データベースの更新
+        $stmt = $pdo->prepare("UPDATE cart SET item_num = :item_num WHERE id=:id and item_code=:item_code");
+        $stmt->execute([':item_num' => $change_item_num, ':id'=> $_SESSION['id'] ,':item_code' => $change_item_code]);
+    }
+}
+
 ?>
+
 
 
 
@@ -32,12 +60,13 @@ $(function () {
 <meta charset="UTF-8">
 <link rel = "stylesheet" href="css/contact.css">
 <title>ホーム画面</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
 
-<table class="table1">
+	<table class="table1">
 		<tr>
 			<td class="td1">
 				<a href="index.php">
@@ -85,67 +114,115 @@ $(function () {
 			</td>
 
 		</tr>
-</table>
+	</table>
 
 
 
-<?php
-	if(isset($_SESSION['family_name'])){
-		echo "ようこそ、".$_SESSION['family_name']."さん！";
-	  }
-	else{
-		echo "<a href='login.php?referrer=item.php'>ログイン</a>";
-		
-	}
+	<?php
+		if(isset($_SESSION['family_name'])){
+			echo "ようこそ、".$_SESSION['family_name']."さん！";
+	 	}
+		else{
+			echo "<a href='login.php?referrer=item.php'>ログイン</a>";
+		}
 	?>
 
 	<br>
 	<h1>アパレル</h1>
 
-<?php
-			$set_item_num=null;
-	//データベースに接続
-            $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
-        //SQL文(アカウント情報取得するための変数)
-            $sql = 'select item_num from cart where id=:id and item_code=:item_code';
-			$sth = $pdo->prepare($sql);
-		//ログインユーザーのID(セッション情報のID)をバインド変数:IDに設定する
+	<?php
+		$set_item_num=null;
+
+		if(isset($_POST['item_code'])  && isset($_POST['item_num'])){
+			try{
+				//データベースに接続
+    			$pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
+				//
+			
+    			//SQL文(アカウント情報取得するための変数)
+        		$sql = 'select item_num from cart where id=:id and item_code=:item_code';
+				$sth = $pdo->prepare($sql);
+				//ログインユーザーのID(セッション情報のID)をバインド変数:IDに設定する
 				$params = array(':id' => $_SESSION['id'],':item_code'=>$_POST['item_code']);
-			//SQL実行
+				//SQL実行
 				$sth->execute($params);
-			//
+				//
 				$result = $sth->fetchAll();
 				foreach ($result as $row){
-						$set_item_num=$row['item_num'];
-					
+					$set_item_num=$row['item_num'];
 				}
 
-		?>
+				//
+    			if(is_null($set_item_num)){
+        			$sql = 'INSERT INTO cart(id,item_code,item_num) VALUES(:id,:item_code,:item_num)';
+    			}else{
+       				 $sql = 'UPDATE cart SET item_num = :item_num WHERE id = :id and item_code = :item_code';
+    			}
 
+    			$sth=$pdo->prepare($sql);
+   				$params=array('id' => $_SESSION['id'],'item_code' => $_POST['item_code'],'item_num' => $set_item_num + $_POST['item_num']);
+				$sth->execute($params);
+
+				echo 'カートに追加しました。';
+				echo '<br>';
+				echo '<br>';
+			}catch(PDOException $e){
+				exit('<FONT COLOR="RED">エラーが発生したためカートに追加できません。</FONT>');
+			}
+		}
+	
+		$pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
+		$sql = 'SELECT * FROM item JOIN cart ON item.item_code=cart.item_code WHERE id=:id ';
+		$sth = $pdo->prepare($sql);
+		$params = array(':id' => $_SESSION['id']);
+		$sth->execute($params);
+
+		$result = $sth->fetchAll();
+		foreach ($result as $row){
+			$set_item_code = $row['item_code'];
+			$set_item_num = $row['item_num'];
+			$set_name = $row['name'];
+			$set_price = $row['price'];
+
+			echo '<br>';
+			echo $set_name;
+			echo '<br>';
+			echo $set_item_num;
+			echo "個";
+			echo '<br>';
+			echo $set_item_num*$set_price;
+			echo "円";
+			echo '<br>';
+			
+	?>
+
+		<form method="POST" action="">
+			<select name="change_item_num">
+						
+				<?php
+						
+					for ($i=0; $i<10; $i++) {		
+						echo '<option value="', $i, '">', $i, '</option>';
+					}
+				?>
+						
+			</select>
+			<input type="hidden" name="change_item_code" value= "<?php echo $set_item_code; ?>">
+    		<button type="submit">変更</button>
+		</form>
+
+		
+
+			
+			<br>
+	
 	<?php
 
-	if(is_null($set_item_num)){
-		try{
 
-            $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
-            $pdo ->exec("insert into cart(id,item_code,item_num) values('".$_SESSION['id']."','".$_POST['item_code']."','".$_POST['item_num']."')");
-			$result = "カートに追加しました。";
 
-		}catch(PDOException $e){
-			$result = '<FONT COLOR="RED">エラーが発生したためカートに追加できません。</FONT>';
+			echo '<br>';
+			echo '<br>';
 		}
-
-	echo $result;
-	}
-	else{try{
-            $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
-            $pdo ->exec("UPDATE cart SET item_num = item_num + ".$_POST['item_num']."  where id= ".$_SESSION['id']." and item_code=".$_POST['item_code']);
-			$result = "カートに追加しました。";
-			
-		}catch(PDOException $e){
-			$result = '<FONT COLOR="RED">エラーが発生したためカートに追加できません。</FONT>';
-		}
-		echo $result;
-
-	}
 	?>
+
+	
