@@ -58,7 +58,7 @@ $(function () {
 
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" href="css/contact.css">
+<link rel = "stylesheet" href="css/cart.css">
 <title>ホーム画面</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -128,7 +128,11 @@ $(function () {
 	?>
 
 	<br>
-	<h1>アパレル</h1>
+	<h1>カート</h1>
+
+	<form action="buy.php" >
+	<input type="submit" value="購入ページへ進む">
+	</form>
 
 	<?php
 		$set_item_num=null;
