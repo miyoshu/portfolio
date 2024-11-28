@@ -194,7 +194,31 @@ $(function () {
             </div>
 
         <h1>ご請求金額</h1>
+    <?php
+        $sum=0;
 
+        $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
+		$sql = 'SELECT * FROM item JOIN cart ON item.item_code=cart.item_code WHERE id=:id ';
+		$sth = $pdo->prepare($sql);
+		$params = array(':id' => $_SESSION['id']);
+		$sth->execute($params);
+
+		$result = $sth->fetchAll();
+		foreach ($result as $row){
+			$set_item_code = $row['item_code'];
+			$set_item_num = $row['item_num'];
+			$set_name = $row['name'];
+			$set_price = $row['price'];
+            $sum += $set_item_num*$set_price;	
+        }
+        echo $sum.'円';
+	?>
+        <br>
+        <br>
+
+        <div>
+            <input type="hidden" name="totalamount" value= "<?php echo $sum ;  ?>">
+        </div>
 
             <div>
                 <input type="submit" class="submit" value="確認する" onclick="return check();">

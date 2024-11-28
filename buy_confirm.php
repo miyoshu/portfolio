@@ -96,3 +96,59 @@ $(function () {
 		
 	}
 	?>
+	<br>
+	<br>
+	<h1>お届け先住所</h1>
+	<?php
+		if($_POST['addressee']==0){
+			echo "ご登録住所";
+
+
+		}else{
+
+			echo '郵便番号';
+			echo '<br>';
+			echo $_POST['postal_code'];
+			echo '<br>';
+			echo '<br>';
+			echo 'ご住所';
+			echo '<br>';
+			echo $_POST['prefecture'];
+			echo $_POST['address_01'];
+			echo $_POST['address_02'];
+		}
+		echo '<br>';
+		echo '<br>';
+		echo'<h1>支払い方法</h1>';
+		if ($_POST['paymethod']==0){
+			echo 'コンビニ払い';
+		}elseif($_POST['paymethod']==1){
+			echo 'クレジットカード';
+		}elseif($_POST['paymethod']==2){
+			echo '代金引換';
+		}elseif($_POST['paymethod']==3){
+			echo '銀行振込';
+		}elseif($_POST['paymethod']==4){
+			echo '電子マネー';
+		}
+
+		echo '<br>';
+		echo '<br>';
+		echo'<h1>ご請求金額</h1>';
+		echo $_POST['totalamount'];
+	?>
+
+	<form action="buy_complete.php" method="post">
+	<?php if($_POST['addressee']==0){ ?>
+        <input type="hidden" value="<?php echo $_POST['addressee']; ?>" name="addressee">
+	<?php }else{  ?>
+		<input type="hidden" value="<?php echo $_POST['addressee']; ?>" name="addressee">
+        <input type="hidden" value="<?php echo $_POST['postal_code']; ?>" name="postal_code">
+        <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">
+        <input type="hidden" value="<?php echo $_POST['address_01']; ?>" name="address_01">
+        <input type="hidden" value="<?php echo $_POST['address_02']; ?>" name="address_02">
+		<?php } ?>
+        <input type="hidden" value="<?php echo $_POST['paymethod']; ?>" name="paymethod">
+        <input type="hidden" value="<?php echo $_POST['totalamount']; ?>" name="totalamount">
+        <input type="submit" class="button2" value="購入する">
+    </form>
