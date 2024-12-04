@@ -107,7 +107,9 @@ try{
 	
     $pdo= new PDO("mysql:dbname=ecsite;host=localhost;","root","");
 
-	$sql = "SELECT item_code,item_num FROM cart WHERE id = :id";
+
+
+	$sql = "SELECT cart.item_code,cart.item_num,item.price,item.name FROM cart JOIN item ON cart.item_code=item.item_code  WHERE id = :id";
 	$sth = $pdo->prepare($sql);
 	$params = array(':id' => $_SESSION['id']);
 	$sth->execute($params);
@@ -115,43 +117,47 @@ try{
 				foreach ($result as $row){
 					$set_item_code=$row['item_code'];
 					$set_item_num=$row['item_num'];
+					$set_price=$row['price'];
+					$set_item_name=$row['name'];
+
+					if($_POST['addressee']==0){
+						$sql = "select postal_code,prefecture,address_01,address_02 from account where id = :id";
+						$sth = $pdo->prepare($sql);
+						$params = array(':id' => $_SESSION['id']);
+				
+						$sth->execute($params);
+								$result = $sth->fetchAll();
+								foreach ($result as $row){
+									
+									
+									$set_postal_code=$row['postal_code'];
+									$set_prefecture=$row['prefecture'];
+									$set_address_01=$row['address_01'];
+									$set_address_02=$row['address_02'];
+								}
+				
+						$pdo ->exec("insert into orderlist(name,user_id,addressee,postal_code,prefecture,address_01,address_02,paymethod,price,item_num,item_code,item_name)
+							values('".$set_name."','".$_SESSION['id']."','".$_POST['addressee']."',$set_postal_code,
+								   '$set_prefecture','".$set_address_01."','".$set_address_02."',
+								   '".$_POST['paymethod']."',$set_price,$set_item_num,$set_item_code,'$set_item_name');");
+				
+								   $result = "購入手続きが完了しました。";
+				
+					}else{
+					$pdo ->exec("insert into orderlist(name,user_id,addressee,postal_code,prefecture,address_01,address_02,paymethod,price,item_num,item_code,item_name)
+							values('".$set_name."','".$_SESSION['id']."','".$_POST['addressee']."','".$_POST['postal_code']."',
+								   '".$_POST['prefecture']."','".$_POST['address_01']."','".$_POST['address_02']."','".$_POST['paymethod']."',
+								   $set_price,$set_item_num,$set_item_code,'$set_item_name');");
+					
+				
+				
+					
+					$result = "購入手続きが完了しました。";
+					}
 				}
 
 
-	if($_POST['addressee']==0){
-		$sql = "select postal_code,prefecture,address_01,address_02 from account where id = :id";
-		$sth = $pdo->prepare($sql);
-		$params = array(':id' => $_SESSION['id']);
 
-		$sth->execute($params);
-				$result = $sth->fetchAll();
-				foreach ($result as $row){
-					
-					
-					$set_postal_code=$row['postal_code'];
-					$set_prefecture=$row['prefecture'];
-					$set_address_01=$row['address_01'];
-					$set_address_02=$row['address_02'];
-				}
-
-		$pdo ->exec("insert into orderlist(name,user_id,addressee,postal_code,prefecture,address_01,address_02,paymethod,totalamount,item_num,item_code)
-    		values('".$set_name."','".$_SESSION['id']."','".$_POST['addressee']."',$set_postal_code,
-				   '$set_prefecture','".$set_address_01."','".$set_address_02."',
-				   '".$_POST['paymethod']."','".$_POST['totalamount']."',$set_item_code,$set_item_num);");
-
-				   $result = "購入手続きが完了しました。";
-
-    }else{
-    $pdo ->exec("insert into orderlist(name,user_id,addressee,postal_code,prefecture,address_01,address_02,paymethod,totalamount)
-    		values('".$set_name."','".$_SESSION['id']."','".$_POST['addressee']."','".$_POST['postal_code']."',
-				   '".$_POST['prefecture']."','".$_POST['address_01']."','".$_POST['address_02']."','".$_POST['paymethod']."',
-				   '".$_POST['totalamount']."',$set_item_code,$set_item_num);");
-	
-
-
-	
-	$result = "購入手続きが完了しました。";
-	}
 
 //在庫減らす処理
 $sql='SELECT item_code,item_num FROM orderlist WHERE user_id =:id';
@@ -173,14 +179,16 @@ $result1 = $sth->fetchAll();
 		foreach ($result1 as $row){
 			$set_quantity=$row['quantity'];
 			$set_item_code=$row['item_code'];
+
+			$sql = 'UPDATE item SET quantity = :quantity WHERE item_code = :item_code';
+			$sth = $pdo->prepare($sql);
+			$params=array(':item_code' => $set_item_code,':quantity' => $set_quantity - $set_item_num_cart);
+			$sth->execute($params);
 		}
 		
 	
 
-		$sql = 'UPDATE item SET quantity = :quantity WHERE item_code = :item_code';
-		$sth = $pdo->prepare($sql);
-		$params=array(':item_code' => $set_item_code,':quantity' => $set_quantity - $set_item_num_cart);
-		$sth->execute($params);
+		
 			
 
     //cartテーブルの行を減らす（ユーザーIDで一致したものを削除）

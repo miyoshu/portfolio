@@ -109,9 +109,18 @@ $(function () {
 			</td>
 			<td>
 				<form action="delete.php" method="post">
+				
         			<button type="submit">アカウント削除</button>
     			</form>
 			</td>
+			<br>
+			<td>
+				<form action="orderhistory.php" method="post">
+				
+        			<button type="submit">購入履歴</button>
+    			</form>
+			</td>
+
 		<tr>
 	</table>
 </main>

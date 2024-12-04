@@ -210,8 +210,11 @@ $(function () {
 			$set_name = $row['name'];
 			$set_price = $row['price'];
             $sum += $set_item_num*$set_price;	
+
+            echo $sum.'円';
+            echo '<br>';
         }
-        echo $sum.'円';
+        
 	?>
         <br>
         <br>
