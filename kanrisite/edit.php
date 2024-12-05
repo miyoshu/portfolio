@@ -1,4 +1,12 @@
 
+<?php
+    session_start();
+    if(isset($_SESSION['employee_num'])) {
+    } else {
+        header('Location: kanri_login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 

@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(isset($_SESSION['employee_num'])) {
+    } else {
+        header('Location: kanri_login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -27,7 +35,7 @@
 <table class="table2">
     <tr>
         <td>
-            <form action="kanri.php">
+            <form action="edit.php">
             <button type="button" onclick=history.back()> 戻る</button>
             </form>
 
