@@ -12,7 +12,7 @@ try {
 if (password_verify($_POST['password'], $result['password'])) {
     $msg = 'ログインしました。';
     $_SESSION['employee_num']= $result['employee_num'];
-    $link = '<a href="kanri.php">ホーム</a>';
+    $link = '<a href="kanri.php">管理者サイトへ</a>';
 } else {
     $msg = 'メールアドレスもしくはパスワードが間違っています。';
     $link = '<a href="kanri_login.php">戻る</a>';

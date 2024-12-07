@@ -38,9 +38,13 @@
 					echo $set_quantity;
 					echo '<br>';
 ?>
-                <form method="post" action="inventry_confirm.php" name="form">
-                    <div>
+                <form method="post" action="inventory_confirm.php" name="form">
+                    <input type="radio" name="indecrease" value="0"checked>＋
                     <br>
+                    <input type="radio" name="indecrease" value="1">－
+                    <br>
+
+                    <div>
                     <input type="text" class="text" input pattern="^[0-9]+$" maxlength=" 7" size="35" name="quantity">
                     </div>
                     <div>
@@ -50,12 +54,14 @@
                     <div>
                         <input type=hidden name="name" value= <?php echo $set_name; ?>>
                     </div>
-                        
+                    <br>
                     <div>
                         <input type="submit" class="submit" value="修正" onclick="return check();">
                     </div>
                 </form>
                 <?php }
+
+                
                 
 					
 	?>
