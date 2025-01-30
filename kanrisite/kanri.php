@@ -8,23 +8,21 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel = "stylesheet" href="css/mypage.css">
-    <title>ホーム画面</title>
+    <head>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href="css/mypage.css">
+        <title>ホーム画面</title>
     </head>
     
     <body>
         社員番号　
-    <?php if(isset($_SESSION['employee_num'])) {
-        echo $_SESSION['employee_num'];
-    } 
-    ?>
-    <br>
-    <br>
-
-
+        <?php
+            if(isset($_SESSION['employee_num'])) {
+                echo $_SESSION['employee_num'];
+            } 
+        ?>
+        <br>
+        <br>
         <table class="button">
             <tr>
                 <td>
@@ -50,3 +48,4 @@
             <tr>
         </table>
     </body>
+</html>

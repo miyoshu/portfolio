@@ -84,7 +84,6 @@ $(function () {
 		</tr>
 	</table>
 
-
 	<div id="header1">
 		<div id="pr">
 		</div>
@@ -98,6 +97,15 @@ $(function () {
                 <p>メールアドレス：<input type="text" name="mail"  required></p>
                 <p>パスワード：<input type="password" name="password"  required></p>
 				<input type="hidden" name="referrer" value="<?= $_GET["referrer"] ?>">
+				<?php
+				if(isset($_POST['item_code'])){
+				?>
+					<input type="hidden" name="item_code" value="<?= $_POST["item_code"] ?>">
+					<input type="hidden" name="item_num" value="<?= $_POST["item_num"] ?>">
+				<?php
+				}
+				?>
+				
                 <p><input type="submit" name="login" value="ログイン"></p>
             </form>
 			<br/>

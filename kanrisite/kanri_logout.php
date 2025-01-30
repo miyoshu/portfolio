@@ -1,8 +1,7 @@
 <?php
-session_start();
-$_SESSION = array();
-session_destroy();
-
-header('Location:kanri.php');
-exit();
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+    header('Location:kanri.php');
+    exit();
 ?>

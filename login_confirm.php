@@ -28,7 +28,7 @@ if ($result && password_verify($_POST['password'], $result['password'])) {
     $_SESSION['prefecture']= $result['prefecture'];
     $_SESSION['address_01']= $result['address_01'];
     $_SESSION['address_02']= $result['address_02'];
-    header('Location: '.$_POST["referrer"]);
+    header('Location: '.$_POST["referrer"],true,307);
 } else {
     $msg = 'メールアドレスもしくはパスワードが間違っています。';
     $link = '<a href="login.php?referrer='.$_POST["referrer"].'">戻る</a>';

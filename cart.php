@@ -116,16 +116,15 @@ $(function () {
 		</tr>
 	</table>
 
-
-
 	<?php
-		if(isset($_SESSION['family_name'])){
-			echo "ようこそ、".$_SESSION['family_name']."さん！";
-	 	}
-		else{
-			echo "<a href='login.php?referrer=item.php'>ログイン</a>";
-		}
+	if(isset($_SESSION['family_name'])){
+		echo "ようこそ、".$_SESSION['family_name']."さん！";
+	} else {
+	header( 'Location:login.php?referrer=cart.php',true,307);
+	}
 	?>
+
+
 
 	<br>
 	<h1>カート</h1>

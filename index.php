@@ -41,8 +41,9 @@ $(function () {
 			<td class="td1">
 				<a href="index.php">
 					<img src="img/20.png" alt="ホーム" class="HOME">
-				</td>
-			</a>
+				</a>
+			</td>
+			
 
 			<td class="td1">
 			<header class="header2">

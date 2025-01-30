@@ -93,7 +93,7 @@ $(function () {
 		echo "ようこそ、".$_SESSION['family_name']."さん！";
 	  }
 	else{
-		echo "<a href='login.php?referrer=item.php'>ログイン</a>";
+		echo "<a href='login.php?referrer=item_apparel.php'>ログイン</a>";
 		
 	}
 	?>
